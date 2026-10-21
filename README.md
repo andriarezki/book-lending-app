@@ -91,7 +91,7 @@ The API tests cover sign-in, permissions, validation, stock and loan limits, ret
 ## Notes
 
 - The demo books are public-domain classics, so the sample data is free to share.
-- For a real deployment, set a long random `JWT_SECRET`, serve over HTTPS and remove `INSECURE_COOKIE`.
+- For a real deployment, set a long random `JWT_SECRET` (e.g. `openssl rand -hex 32` in a `.env` file, never committed), serve over HTTPS and remove `INSECURE_COOKIE`. If `JWT_SECRET` is empty the server uses a random key, so sessions reset on restart.
 
 ## License
 

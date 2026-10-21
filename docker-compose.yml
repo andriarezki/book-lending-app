@@ -4,7 +4,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      JWT_SECRET: change-me-to-a-long-random-string
+      JWT_SECRET: ${JWT_SECRET:-} # set in your shell or a .env file; empty = random key per start
       INSECURE_COOKIE: "1" # local demo over plain http; remove behind HTTPS
     volumes:
       - library-data:/data

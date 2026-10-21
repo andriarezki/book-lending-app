@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
+import { randomBytes } from 'node:crypto';
 import jwt from 'jsonwebtoken';
 import type { Role } from './db.js';
 
@@ -15,7 +16,12 @@ declare module 'express-serve-static-core' {
 }
 
 const COOKIE = 'session';
-const secret = (): string => process.env.JWT_SECRET ?? 'dev-only-secret-change-me';
+// Without JWT_SECRET we use a random per-process key: safe by default, sessions just reset on restart.
+const fallbackSecret = randomBytes(32).toString('hex');
+if (!process.env.JWT_SECRET && process.env.NODE_ENV === 'production') {
+  console.warn('JWT_SECRET is not set; using a random key, so sessions reset on every restart.');
+}
+const secret = (): string => process.env.JWT_SECRET || fallbackSecret;
 
 export function setSession(res: Response, user: SessionUser): void {
   const token = jwt.sign(user, secret(), { expiresIn: '8h' });
