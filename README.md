@@ -1,5 +1,7 @@
 # 📚 Book Lending App
 
+[![CI](https://github.com/andriarezki/book-lending-app/actions/workflows/ci.yml/badge.svg)](https://github.com/andriarezki/book-lending-app/actions/workflows/ci.yml)
+
 A small, complete library system: browse a catalogue, borrow and return books, and see what is happening on an admin dashboard.
 
 Built as a full-stack TypeScript project: **React** on the front end, an **Express REST API** on the back end, **SQLite** for storage, with tests, CI and a one-command Docker setup.
