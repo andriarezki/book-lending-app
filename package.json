@@ -1,0 +1,16 @@
+{
+  "name": "book-lending-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack library and book lending app: React + TypeScript frontend, Express + TypeScript REST API, SQLite.",
+  "workspaces": ["server", "client"],
+  "scripts": {
+    "dev": "npm run dev -w server & npm run dev -w client",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client",
+    "seed": "npm run seed -w server"
+  },
+  "license": "MIT"
+}
